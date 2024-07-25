@@ -22,7 +22,7 @@ class LampBoard {
 
         this.boardElement.style.gridTemplateColumns = `repeat(${numColumns}, 10px)`;
         const fragment = document.createDocumentFragment();
-        this.lamps = [];
+        this.lamps = new Array(numColumns * numRows);
 
         for (let i = 0; i < numColumns * numRows; i++) {
             const lamp = document.createElement('div');
@@ -31,7 +31,7 @@ class LampBoard {
             lamp.setAttribute('role', 'gridcell');
             lamp.setAttribute('aria-label', `Лампочка ${i + 1}`);
             fragment.appendChild(lamp);
-            this.lamps.push(lamp);
+            this.lamps[i] = lamp;
 
             lamp.addEventListener('click', () => {
                 this.toggleLamp(lamp);
